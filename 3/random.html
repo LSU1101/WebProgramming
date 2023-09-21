@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <title>랜덤 숫자 만들기</title>
+</head>
+<body>
+   <script>
+    let randomNum = Math.floor(Math.random() * 10);
+    let input = prompt("0-9 사이의 값을 입력하세요.");
+
+    while(randomNum != input) {
+            alert("오답!");
+            if (randomNum > input) {
+                input = prompt("더 큰 수를 입력하세요.");
+            } else {
+                input = prompt("더 작은 수를 입력하세요.");
+            }
+    }
+
+    alert("정답!");
+
+   </script>
+</body>
+</html>

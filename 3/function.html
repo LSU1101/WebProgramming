@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <title>함수 만들기</title>
+   <script>
+    function mClick(value) {
+        alert("버튼" + value + " 을(를) 눌렀어요.");
+    }
+   </script>
+   <style>
+      button {
+         width: 100px;
+         height: 50px;
+         border: 0;
+         color: white;
+      }
+
+      #bt1 {
+         background-color: red;
+      }
+
+      #bt2 {
+         background-color: green;
+      }
+
+      #bt3 {
+         background-color: blue;
+      }
+   </style>
+</head>
+<body>
+   <button id="bt1" onclick="mClick(this.value)" value="1">버튼 1</button>
+   <button id="bt2" onclick="mClick(this.value)" value="2">버튼 2</button>
+   <button id="bt3" onclick="mClick(this.value)" value="3">버튼 3</button>
+</body>
+</html>

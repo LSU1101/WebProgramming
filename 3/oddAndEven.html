@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <title>홀짝 게임</title>
+   <script>
+    let random = Math.floor(Math.random() * 10);
+    let result = 3;
+    let print;
+    let choose;
+
+    while(true) {
+        choose = prompt("홀/짝을 선택하세요.");
+
+        if ((choose == "홀") || (choose == "홀수")) {
+            result = 1;
+            break;
+        } else if ((choose == "짝") || (choose == "짝수")) {
+            result = 0;
+            break;
+        } else {
+            alert("올바르게 입력하세요.");
+        }
+    }
+
+    if (random % 2 == result) { 
+        document.write("<h3>정답입니다.</h3>");
+    } else {
+        document.write("<h3>틀렸어요.</h3>");
+    }
+
+    document.write("나는 " + random + "개를 가지고 있고<br>당신은 " + choose.fontcolor("red") + "을 선택했어요.");
+   </script>
+</head>
+<body>
+   
+</body>
+</html>
