@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <title>Literal 표현</title>
+   <script>
+    let account = {
+        name : "한성대",
+        code : "1001-123456",
+        balance : 0,
+
+        lookUp : function() {
+            return this.balance;
+        },
+
+        deposit : function(money) {
+            this.balance += money;
+        },
+
+        withDraw : function(money) {
+            this.balance -= money;
+        }
+    };
+   </script>
+</head>
+<body>
+    <h1>Literal 표현</h1>
+    <hr>
+ 
+    <script>
+     // 객체 활용
+     document.write("account : ");
+     document.write(account.name + ", ");
+     document.write(account.code + ", ");
+     document.write("잔액: " + account.balance + "<br>");
+ 
+     account.deposit(10000); // 10000원 저금
+     document.write("10,000원 저금 후 잔액은 " + account.lookUp() + "<br>");
+ 
+     account.withDraw(5000); // 5000원 인출
+     document.write("5,000원 인출 후 잔액은 " + account.lookUp() + "<br>");
+ 
+     account.deposit(1000);
+     document.write("1,000원 저금 후 잔액은 " + account.lookUp() + "<br>");
+ 
+     account.deposit(1000000);
+     document.write("1,000,000원 저금 후 잔액은 " + account.lookUp() + "<br>");
+    </script>
+</body>
+</html>

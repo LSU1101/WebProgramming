@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <title>도시락 행사</title>
+</head>
+<body>
+   <script>
+    function dClock() {
+        var dt = new Date();
+
+        var month = dt.getMonth(); 
+        var date = dt.getDate();
+        var day = dt.getDay();
+        var hours = dt.getHours();
+        var minutes = dt.getMinutes();
+        var seconds = dt.getSeconds();
+
+        // document.getElementById("show").innerHTML = dt; //
+        document.getElementById("show").innerHTML = hours + ":" + minutes + ":" + seconds; 
+
+        if (hours > 10 && hours < 14) {
+            document.getElementById("event").innerHTML = "도시락 1+1 행사!";
+        } else if (hours > 17 && hours < 20) {
+            document.getElementById("event").innerHTML = "도시락 30% 할인!";
+        } else {
+            document.getElementById("event").innerHTML = "<br>도시락 사세요~";
+        }
+    }
+    setInterval(dClock, 1000);
+
+   </script>
+   <h1 id="show"></h1>
+   <h3 id="event"></h3>
+</body>
+</html>

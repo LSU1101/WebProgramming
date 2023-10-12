@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <title>자동차 객체</title>
+
+   <script>
+    let car = {
+        speed : 0,
+        oil : 0,
+
+        break : function(strong) {
+
+        },
+
+        accel : function(strong) {
+
+        },
+
+        fill : function(oil) {
+
+        },
+
+        drive : function() {
+            if(this.speed > 0 && this.oil > 0) {
+
+            }
+        },
+
+
+
+    }
+
+    function drive() {
+        car.drive();
+    }
+
+    setInterval(drive, 500);
+   </script>
+</head>
+<body>
+   <form action="">
+    <div id="volume"> Oil : 0</div>
+    <input type="button" value="주유" id="oil" onclick="car.fill(50);">
+    <p>
+        <input type="button" value="브레이크" id="brake" onclick="car.break(10);">
+        <input type="button" value="엑셀" id="accel" onclick="car.accel(10);">
+   </form>
+   <div id="carSpeed">>> STOP</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <title>Prototype 표현</title>
+
+   <script>
+    function account(id, name) {
+        this.id = id;
+        this.name = name;
+        this.balance = 0;
+
+        this.lookUp =  function() {
+            return this.balance;
+        }
+
+        this.deposit = function(money) {
+            this.balance += money;
+        }
+
+        this.withDraw = function(money) {
+            this.balance -= money;
+        }
+    }
+   </script>
+</head>
+<body>
+   <script>
+    let han = new account(1, "한성대");
+    let we = new account(2, "우리대");
+
+    han.deposit(10000);
+    han.withDraw(5000);
+    document.write(han.name + "계좌의 잔액은 " + han.lookUp() + "<br>");
+
+    we.deposit(1000);
+    we.deposit(1000000)
+    we.withDraw(1000);
+    document.write(we.name + "계좌의 잔액은 " + we.lookUp() + "<br>");
+   </script>
+</body>
+</html>
