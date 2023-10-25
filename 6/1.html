@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <title>키 이벤트 응용</title>
+   <style>
+    td {
+        width: 50px;
+        height: 50px;
+        color: gray;
+        border: solid gray;
+    }
+   </style>
+</head>
+<body onkeydown="keyDown(event)">
+   <table>
+    <tr><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td></tr>
+   </table>
+
+   <script>
+        var row = 0;
+        var col = 0;
+
+        let tr = document.getElementsByTagName("tr");
+        let td = tr[row].getElementsByTagName("td");
+        td[col].style.backgroundColor = "black";
+
+        function keyDown(e) {
+            if (e.key == "ArrowRight") {
+                td[col].style.backgroundColor = "white";
+
+                if (col == 3) { // 오른쪽 끝에 도달했을 경우 왼쪽 처음으로 이동
+                    col = -1;
+                }
+
+                td[++col].style.backgroundColor = "black";
+            } else if (e.key == "ArrowLeft") {
+                td[col].style.backgroundColor = "white";
+
+                if (col == 0) { // 왼쪽 끝에 도달했을 경우 오른쪽 처음으로 이동
+                    col = 4;
+                }
+                
+                td[--col].style.backgroundColor = "black";
+            } else if (e.key == "ArrowUp") {
+                td[col].style.backgroundColor = "white";
+
+                if (row == 0) { // 맨 위에 도달했을 경우 맨 아래로 이동
+                    row = 4;
+                }
+
+                td = tr[--row].getElementsByTagName("td");
+                td[col].style.backgroundColor = "black";
+            } else if (e.key == "ArrowDown") {
+                td[col].style.backgroundColor = "white";
+
+                if (row == 3) { // 맨 아래에 도달했을 경우 맨 위로 이동
+                    row = -1;
+                }
+
+                td = tr[++row].getElementsByTagName("td");
+                td[col].style.backgroundColor = "black";
+            }
+    }
+   </script>
+</body>
+</html>
