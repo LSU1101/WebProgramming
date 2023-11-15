@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김준한4</title>
+    <style>
+        table {
+            border: 1px solid black; /* 테이블 경계선 스타일 수정 */
+        }
+        th {
+            background-color: blue;
+            color: white;
+            font-size: 12px; /* 폰트 크기 수정 */
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function addData() {
+            let nameInput = document.getElementById("nameInput");
+            let scoreInput = document.getElementById("scoreInput");
+
+            if (nameInput.value === "" || scoreInput.value === "") {
+                alert("이름과 점수를 모두 입력하세요.");
+                return;
+            }
+
+            let table = document.getElementById("scoreTable");
+            let row = table.insertRow(-1); // 마지막 행에 삽입
+            let cell1 = row.insertCell(0); // 이름 셀
+            let cell2 = row.insertCell(1); // 웹프로그래밍 셀
+
+            cell1.innerHTML = nameInput.value;
+            cell2.innerHTML = scoreInput.value;
+
+            // 셀을 클릭하면 해당 행을 삭제하는 기능 추가
+            row.onclick = function() {
+                table.deleteRow(this.rowIndex);
+            }
+
+            // 입력 필드 초기화
+            nameInput.value = "";
+            scoreInput.value = "";
+        }
+    </script>
+    <hr>
+    성적 입력 <input type="text" id="nameInput" placeholder="이름"> <input type="text" id="scoreInput" placeholder="웹프로그래밍">
+    <input type="submit" value="추가" onclick="addData()">
+    <hr>
+    <table id="scoreTable">
+        <caption>우리반 성적표</caption>
+        <tr><th>이름</th><th>웹프로그래밍</th></tr>
+    </table>
+</body>
+</html>

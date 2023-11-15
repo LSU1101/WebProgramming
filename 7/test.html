@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+    <h1>나 내일 시험이야</h1>
+  <h3>
+    ?
+    <button id="borderButton">border</button>
+    <button>p</button>
+  </h3>
+  <hr>
+  <p>.</p>
+  <p><span id="mySpan">C</span>.</p>
+  <p>GUI.</p>
+  <script>
+    const borderButton = document.getElementById('borderButton');
+    const mySpan = document.getElementById('mySpan');
+
+    borderButton.addEventListener('click', function () {
+      // 클릭 시 2픽셀 빨간색 점선 테두리 추가
+      mySpan.style.border = '2px dashed red';
+    });
+  </script>
+</body>
+</html>

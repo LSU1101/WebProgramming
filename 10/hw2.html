@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        input {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>두 수 더하기/곱하기</h1>
+    <hr>
+    <input type="number" id="num1">
+    <input type="number" id="num2">
+
+    <p id="result"></p>
+
+    <button onclick="calculate('add')">더하기</button>
+    <button onclick="calculate('mul')">곱하기</button>
+    <script>
+        function calculate(operation) {
+            const num1 = document.getElementById('num1').value;
+            const num2 = document.getElementById('num2').value;
+
+            if (num1 !== '' && num2 !== '') {
+                const workerCode = `
+                    onmessage = function (e) {
+                        const num1 = e.data.num1;
+                        const num2 = e.data.num2;
+                        const operation = e.data.operation;
+
+                        let result;
+
+                        if (operation === 'add') {
+                            result = num1 + num2;
+                        } else if (operation === 'mul') {
+                            result = num1 * num2;
+                        }
+
+                        postMessage(result);
+                    };
+                `;
+
+                const blob = new Blob([workerCode], { type: 'application/javascript' });
+                const worker = new Worker(URL.createObjectURL(blob));
+
+                worker.postMessage({
+                    num1: parseFloat(num1),
+                    num2: parseFloat(num2),
+                    operation: operation
+                });
+
+                worker.onmessage = function (e) {
+                    document.getElementById('result').textContent = `${e.data}`;
+                    worker.terminate();
+                };
+            } else {
+                alert('두 수를 입력하세요.');
+            }
+        }
+    </script>
+</body>
+</html>

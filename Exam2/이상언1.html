@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <title>이상언1</title>
+   <style>
+    #bt {
+        width: 100px;
+        height: 100px;
+    }
+   </style>
+   <script>
+    let click = 0;
+    function mClick() {
+        click++;
+
+        let b = document.getElementById("bt");
+        let i = 0;
+        if (click % 4 == 1) {
+            b.style.backgroundColor = "red";
+        } else if (click % 4 == 2) {
+            b.style.backgroundColor = "green";
+        } else if (click % 4 == 3) {
+            b.style.backgroundColor = "blue";
+        } else {
+            b.style.backgroundColor = "grey";
+        }
+    }
+   </script>
+</head>
+<body>
+   <h3>click to change color</h3>
+   <button id="bt" onclick="mClick(this.value)" value="1"></button>
+</body>
+</html>

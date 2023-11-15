@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김준한2</title>
+    <style>
+        .engine-on {
+            color: green;
+        }
+
+        .engine-off {
+            color: red;
+        }
+    </style>
+    <script>
+        let car = {
+            speed: 0,
+            oil: 0,
+            engineOn: false,
+
+            brake: function (strong) {
+                this.speed -= strong;
+                this.updateSpeed();
+            },
+            accel: function (strong) {
+                this.speed += strong;
+                this.updateSpeed();
+            },
+            fill: function (oil) {
+                this.oil += oil;
+                this.updateOil();
+            },
+            toggleEngine: function () {
+                this.engineOn = !this.engineOn;
+                this.updateEngineState();
+            },
+            drive: function () {
+                if (this.engineOn && this.speed > 0 && this.oil > 0) {
+                    this.speed -= 2;
+                    this.oil -= 2;
+                    this.updateSpeed();
+                    this.updateOil();
+                } else {
+                    document.getElementById("carSpeed").innerHTML = ">> STOP";
+                    this.speed = 0;
+                }
+            },
+            updateSpeed: function () {
+                document.getElementById("carSpeed").innerHTML = ">> Speed: " + this.speed;
+            },
+            updateOil: function () {
+                document.getElementById("volume").innerHTML = "Oil: " + this.oil;
+            },
+            updateEngineState: function () {
+                const siElement = document.getElementById("siText");
+                siElement.innerHTML = "시동상태: " + (this.engineOn ? "켜짐" : "꺼짐");
+                siElement.className = this.engineOn ? "engine-on" : "engine-off";
+            }
+        };
+
+        function drive() {
+            car.drive();
+        }
+
+        setInterval(drive, 500);
+    </script>
+</head>
+<body>
+    <form action="">
+        <input type="button" value="시동버튼" id="siButton" onclick="car.toggleEngine()">
+        <span id="siText" class="engine-off">시동상태: 꺼짐</span> <hr>
+        <div id="volume"> Oil: 0</div>
+        <input type="button" value="주유" id="oil" onclick="car.fill(50);">
+        <p>
+        <input type="button" value="브레이크" id="brake" onclick="car.brake(10);">
+        <input type="button" value="액셀" id="accel" onclick="car.accel(10)">
+        </form>
+        <div id="carSpeed">>> STOP</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>단어장 만들기</title>
+        <style>
+            input {
+                margin: 3px;
+            }
+        </style>
+        <script>
+            function store() {
+                var english = document.getElementById("eng").value;
+                var korean = document.getElementById("kor").value;
+
+                english = english.trim();
+                korean = korean.trim();
+
+                var ret = localStorage.setItem(english, korean);
+                document.getElementById("eng").value = "";
+                document.getElementById("kor").value = "";
+            }
+
+            function search() {
+                var english = document.getElementById("eng").value;
+                var korean = localStorage.getItem(english);
+                english = english.trim();
+
+                if(korean == null) {
+                    alert("없는 단어입니다.");
+                    document.getElementById("kor").value = "";
+                    return;
+                }
+    
+                var korObj = document.getElementById("kor");
+                korObj.value = korean;
+            }
+    
+            function remove() {
+                var english = document.getElementById("eng").value;
+                english = english.trim();
+
+                if(localStorage.getItem(english) == null) {
+                    alert(english + "가 없습니다.");
+                    return;
+                }
+                var korean = localStorage.removeItem(english);
+                document.getElementById("eng").value = "";
+                document.getElementById("kor").value = english + " 삭제됨";
+            }
+    
+            function viewAll() {
+                var win = window.open("./ex12_hw1-view.html", "viewwin");
+            }
+        </script>
+    </head>
+    <body>
+        <h1>나의 단어장 만들기</h1>
+        <hr>
+        <form>
+            <label>영어 <input id="eng" type="text" size="20"></label>
+            <br>
+            <label>한글 <input id="kor" type="text" size="20"></label>
+            <br>
+            <br>
+            <input type="button" value="단어 저장" onclick="store()">
+            <input type="button" value="영단어 검색" onclick="search()">
+            <input type="button" value="단어 삭제" onclick="remove()">
+            <input type="button" value="전체 보기" onclick="viewAll()">
+        </form>
+    </body>
+</html>

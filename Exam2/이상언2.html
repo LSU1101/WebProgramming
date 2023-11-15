@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <title>이상언2</title>
+
+   <style>
+    span {
+        color: red;
+    }
+   </style>
+
+
+</head>
+<body>
+   <button id="btn">폰트 교체</button>
+    <p><span id="span">청춘</span>예찬.<span id="span">청춘</span>은 눈부시게 아름답다.하지만 무엇인가를 이루고자 하는 의욕만큼 좀처럼 마음대로 되지 않는 게 세상이라는 것을 알아가는 고통스러운 시기이기도 하다. 무언가를 이루고자 하는 의욕과 달리, 좀처럼 마음대로 되지 않는 게 세상이라는 걸 알아가는 시절이 <span id="span">청춘</span>이다. 하지만 새로움에 도전하고 실패에도 일어서 또 다른 새로움에 도전 하는 것이 <span id="span">청춘</span>이다.</p>
+
+    <script>
+        let btn = document.getElementById("btn");
+
+        btn.addEventListener('click', function () {
+            for (let i = 0; i < 4; i++) {
+                let a = document.getElementsByTagName("span");
+                a[i].style.color =  "blue";
+                a[i].innerHTML = "한성대";
+            }
+
+        })
+
+    </script>
+
+</body>
+</html>

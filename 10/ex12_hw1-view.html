@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>나의 단어장 모두 출력</title>
+</head>
+<body>
+	<h3>나의 단어장 모두 출력</h3>
+	<hr>
+	<script>
+		document.write("<table>");
+		for(i = 0; i < localStorage.length; i++) {				
+            var key = localStorage.key(i);
+			var val = localStorage.getItem(key);
+
+			document.write("<tr>");
+			document.write("<td><span>" + (i + 1) + ". </span></td>");
+			document.write("<th>" + key + "</th>");				document.write("<td>" + val + "</td>");
+			document.write("</tr>");
+		}
+		document.write("</table>");
+	</script>
+</body>
+</html>
