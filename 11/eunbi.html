@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>세션 스토리지에 StorageEvent</title>
+
+</head>
+
+<body>
+    <h1>Map객체 & 동적객체 추가</h1>
+    <hr>
+    이름 : <input id="name" type="text" size="5">
+    <br>
+    나이 : <input id="age" type="text" size="5">
+    <br>
+    주소 : <input id="adres" type="text" size="50">
+    <br>
+    <input type="button" value="확인" onclick="store()">
+    <input type="button" value="취소" onclick="cancel()">
+    <hr>
+    <table border="1" id="parent">
+        <tr style="background-color: bisque;text-align:center;">
+            <td>이름</td>
+            <td>나이</td>
+            <td>주소</td>
+        </tr>
+    </table>
+    <hr>
+    <script>
+        let name = document.getElementById("name");
+        let age = document.getElementById("age");
+        let adres = document.getElementById("adres");
+
+        const map = new Map();
+
+        function createTR() {
+            let obj = document.getElementById("parent");
+            let newTR = document.createElement("tr");
+
+            let nameValue = map.get("name");
+            let ageValue = map.get("age");
+            let adresValue = map.get("adres");
+
+            newTR.innerHTML = "<td>" + nameValue + "</td><td>" + ageValue + "</td><td>" + adresValue + "</td>";
+            obj.appendChild(newTR);
+        }
+
+        function store() {
+            map.set("name", name.value)
+            map.set("age", age.value)
+            map.set("adres", adres.value)
+            createTR();
+        }
+
+        function cancel() {
+            name.value = "";
+            age.value = "";
+            adres.value = "";
+        }
+
+    </script>
+</body>
+
+</html>

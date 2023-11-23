@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+   <title>Map 객체 & 동적객체 추가</title>
+
+   <style>
+    table, th, td {
+        border: 1px solid;
+        border-collapse: collapse;
+        text-align: center;
+    }
+   </style>
+
+   <script>
+    const map = new Map();
+    const keys = map.keys();
+    const values = map.values();
+    
+    function store() {
+        let name = document.getElementById('name').value;
+        let age = document.getElementById('age').value;
+        let adress = document.getElementById('adress').value;
+
+        if (name == "" || age == "" || adress == "") {
+            alert("모두 입력하세요.")
+            return;
+        }
+        
+        map.set("name", name);
+        map.set("age", age);
+        map.set("adress", adress);
+        
+        let table = document.getElementById("table");
+        let row = table.insertRow(-1);
+        let cell1 = row.insertCell(0); 
+        let cell2 = row.insertCell(1); 
+        let cell3 = row.insertCell(2);
+        
+        cell1.innerHTML = map.get("name");
+        cell2.innerHTML = map.get("age");
+        cell3.innerHTML = map.get("adress");
+
+        document.getElementById('name').value = "";
+        document.getElementById('age').value = "";
+        document.getElementById('adress').value = "";
+    }
+
+    function cancle() {
+        document.getElementById('name').value = "";
+        document.getElementById('age').value = "";
+        document.getElementById('adress').value = "";
+    }
+</script>
+</head>
+<body id="body">
+   <h1>Map 객체 & 동적객체 추가</h1>
+   <hr>
+
+   <label for="name">이름: </label>
+   <input type="text" name="name" id="name" size="5">
+   <br>
+   <label for="age">나이: </label>
+   <input type="text" name="age" id="age" size="5">
+   <br>
+   <label for="adress">주소: </label>
+   <input type="text" name="adress" id="adress" size="40">
+   <br>
+
+    <button onclick="store()">확인</button>
+    <button onclick="cancle()">취소</button>
+    <hr>
+
+    <table id="table">
+    <tr>
+        <th>이름</th> <th>나이</th> <th>주소</th>
+    </tr>
+    </table>
+</body>
+</html>
